@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DK Elyon | Transporte y Turismo en Chile</title>
+    <meta name="description" content="Transporte y turismo en Chile. Reserva por WhatsApp +56 9 5830 6172 o por correo contacto@dkelyontransporteyturismo.cl" />
+    <style>
+      :root {
+        --black: #1f1d22;
+        --charcoal: #2c2930;
+        --white: #fff;
+        --gray: #d9d9de;
+        --light: #f3f3f5;
+        --blue: #003f5c;
+        --blue-soft: #1f6f8b;
+        --gold: #f7b500;
+        --wa: #25d366;
+        --container: min(1200px, 92vw);
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: "Segoe UI", Arial, sans-serif; color: var(--black); line-height: 1.45; }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      .container { width: var(--container); margin-inline: auto; }
+
+      .top { background: linear-gradient(90deg,#1f1d22,#2f2b34); color: #fff; padding: .65rem 0; font-size: .94rem; }
+      .top .container { display:flex; justify-content:space-between; gap:.8rem; flex-wrap:wrap; }
+      .top strong { color: var(--gray); }
+
+      .nav { position: sticky; top:0; z-index:99; background: rgba(0,63,92,.95); border-bottom:1px solid rgba(255,255,255,.2); }
+      .nav .container { min-height: 84px; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+      .logo { color:#fff; font-weight:900; letter-spacing:.06em; font-size: clamp(1.6rem,3.6vw,2.7rem); }
+      .logo span { color: var(--gold); }
+      .menu { display:flex; gap:1rem; color:#eaf5ff; font-size:.93rem; }
+
+      .btn,.btn-gold,.btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:.45rem; border-radius:999px; font-weight:700; padding:.82rem 1.25rem; transition:.2s ease; }
+      .btn { background: var(--wa); color:#fff; }
+      .btn-gold { background: var(--gold); color: var(--black); }
+      .btn-outline { border:1px solid #fff; color:#fff; }
+      .btn:hover,.btn-gold:hover,.btn-outline:hover { transform: translateY(-2px); }
+
+      .hero {
+        background: linear-gradient(95deg, rgba(0,35,55,.83), rgba(0,60,90,.55)),
+        url('https://share.google/gGYJE9TVNxmiXVvat') center/cover;
+        color:#fff; padding:5rem 0 4rem;
+      }
+      .hero-grid { display:grid; grid-template-columns: 1.15fr .85fr; gap:1.2rem; align-items:center; }
+      .eyebrow { display:inline-block; text-transform:uppercase; letter-spacing:.12em; background: rgba(36,167,214,.9); padding:.35rem .8rem; font-size:.82rem; margin-bottom:1rem; }
+      h1 { font-size: clamp(2rem,6vw,4rem); line-height:1.07; max-width:14ch; }
+      .mark { color: var(--gold); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness:4px; }
+      .hero ul { list-style:none; margin:1rem 0 1.2rem; display:grid; gap:.4rem; color:#dff3ff; }
+      .hero li::before { content:'✓'; color: var(--gold); margin-right:.45rem; }
+      .cta-row { display:flex; flex-wrap:wrap; gap:.65rem; }
+
+      .form-box { background: rgba(0,24,35,.72); border:1px solid rgba(255,255,255,.22); border-radius:14px; padding:1rem; }
+      .form-box h3 { margin-bottom:.8rem; }
+      .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:.55rem; }
+      .form-grid input,.form-grid select { width:100%; border:0; border-radius:10px; font:inherit; padding:.7rem .8rem; }
+      .form-submit { margin-top:.65rem; width:100%; border:0; cursor:pointer; }
+
+      section { padding: 4.2rem 0; }
+      .section-head { text-align:center; margin-bottom:1.8rem; }
+      .section-head h2 { font-size: clamp(1.7rem,3vw,2.5rem); }
+      .section-head p { margin-top:.45rem; color:#5f606a; }
+
+      .stats { background:#042d42; color:#fff; padding:1.15rem; border-radius:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:.8rem; }
+      .stats strong { display:block; color:var(--gold); font-size:2rem; }
+
+      .destinations { background: var(--light); }
+      .dest-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:.8rem; }
+      .dest-intro,.dest-card { border-radius:14px; overflow:hidden; min-height:340px; }
+      .dest-intro { background:#003953; color:#fff; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between; }
+      .dest-card { position:relative; }
+      .dest-card::before { content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.2)); }
+      .dest-card img { width:100%; height:100%; object-fit:cover; }
+      .dest-content { position:absolute; left:1rem; right:1rem; bottom:1rem; color:#fff; }
+
+      .services { background:#f7f7fa; }
+      .services-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+      .service-item { background:#fff; border:1px solid #e5e5ea; border-radius:14px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; }
+      .service-item img { width:100%; height:100%; object-fit:cover; }
+      .service-body { padding:1rem; }
+      .service-body h3 { margin-bottom:.5rem; }
+
+      .about-wrap { display:grid; grid-template-columns:1fr 1fr; gap:1rem; align-items:stretch; }
+      .about-card { background:var(--light); border:1px solid #e0e0e4; border-radius:14px; padding:1.1rem; }
+      .about-card h2 { margin:.75rem 0; font-size: clamp(1.6rem,3vw,2.4rem); }
+      .about-list { list-style:none; margin-top:.8rem; display:grid; gap:.5rem; }
+      .about-list li::before { content:'•'; color: var(--gold); margin-right:.45rem; }
+
+      .fleet { background: var(--black); color:#fff; }
+      .fleet .section-head p { color:#d8d8df; }
+      .fleet-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; }
+      .fleet-card { background: var(--charcoal); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:1rem; }
+
+      .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
+      .faq-item { border:1px solid #e2e2e6; border-radius:12px; padding:1rem; background:#fff; }
+
+      .badge-wrap { margin-top:1.3rem; display:flex; justify-content:center; }
+      .badge { background:#fff; border:1px solid #e2e2e6; border-radius:12px; padding:.8rem; text-align:center; max-width:320px; }
+      .badge img { width:64px; margin:0 auto .45rem; }
+
+      .closing { background: linear-gradient(135deg,#00354c,#00283b); color:#fff; text-align:center; border-radius:18px; padding:2rem; }
+      footer { padding:1.4rem 0 2rem; text-align:center; color:#666771; }
+      .floating-wa { position:fixed; right:1rem; bottom:1rem; z-index:100; background:var(--wa); color:#fff; border-radius:999px; padding:.82rem 1rem; font-weight:700; box-shadow:0 10px 24px rgba(0,0,0,.25); }
+
+      @media (max-width: 980px) {
+        .menu { display:none; }
+        .hero-grid,.about-wrap,.services-grid,.service-item,.fleet-grid,.faq-grid,.stats,.form-grid { grid-template-columns:1fr; }
+        .dest-grid { grid-template-columns:1fr 1fr; }
+      }
+      @media (max-width: 700px) {
+        .dest-grid { grid-template-columns:1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <div class="container">
+        <span><strong>DK Elyon Transporte y Turismo</strong> · Atención inmediata</span>
+        <span>WhatsApp: +56 9 5830 6172 · contacto@dkelyontransporteyturismo.cl</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="container">
+        <a class="logo" href="#inicio">DK <span>ELYON</span></a>
+        <div class="menu">
+          <a href="#destinos">Destinos</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#contacto">Contacto</a>
+          <a href="https://instagram.com/dkelyon_transportes" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <a class="btn" href="https://wa.me/56958306172" target="_blank" rel="noopener">Reservar WhatsApp</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Agencia de turismo en Chile</span>
+          <h1>Mejores <span class="mark">experiencias</span> de viajes en Chile</h1>
+          <ul>
+            <li>Traslados privados y tours personalizados.</li>
+            <li>Servicio para aeropuerto, ciudad, nieve, viñedos y termas.</li>
+            <li>Atención por WhatsApp e Instagram.</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn" href="https://wa.me/56958306172" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+            <a class="btn-outline" href="mailto:contacto@dkelyontransporteyturismo.cl">Escribir por correo</a>
+          </div>
+        </div>
+
+        <form class="form-box" id="mail-form">
+          <h3>Solicita tu viaje ahora</h3>
+          <div class="form-grid">
+            <input id="nombreApellido" type="text" placeholder="Nombre y Apellido" required />
+            <input id="whatsapp" type="tel" placeholder="Whatsapp" required />
+            <input id="fechaViaje" type="date" required />
+            <input id="horaViaje" type="time" required />
+            <input id="origen" type="text" placeholder="Origen" required />
+            <input id="destino" type="text" placeholder="Destino" required />
+            <input id="pasajeros" type="number" min="1" placeholder="Cantidad de pasajeros" required />
+            <input id="equipaje" type="text" placeholder="Equipaje - cantidad y tamaño" required />
+            <select id="pago" required>
+              <option value="" disabled selected>Forma de pago</option>
+              <option>Transferencia</option>
+              <option>Efectivo</option>
+              <option>Tarjeta</option>
+            </select>
+          </div>
+          <button class="btn-gold form-submit" type="submit">Enviar solicitud al correo</button>
+        </form>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="stats">
+          <article><strong>+25</strong>Destinos turísticos</article>
+          <article><strong>24/7</strong>Atención personalizada</article>
+          <article><strong>+2.000</strong>Pasajeros satisfechos</article>
+          <article><strong>100%</strong>Reservas confirmadas</article>
+        </div>
+      </div>
+    </section>
+
+    <section class="destinations" id="destinos">
+      <div class="container">
+        <div class="section-head">
+          <h2>Destinos turísticos más solicitados</h2>
+          <p>Opciones para nieve, viñas, ciudad y traslados a medida.</p>
+        </div>
+
+        <div class="dest-grid">
+          <article class="dest-intro">
+            <div>
+              <h3 style="font-size:2.2rem;line-height:1.1;">Destinos destacados</h3>
+              <p style="margin-top:.8rem;color:#cfe8f7;">Diseñamos itinerarios para familias, parejas y empresas.</p>
+            </div>
+            <a class="btn-gold" href="https://wa.me/56958306172" target="_blank" rel="noopener">Todos los destinos</a>
+          </article>
+
+          <article class="dest-card">
+            <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=900&q=80" alt="Montañas" />
+            <div class="dest-content">
+              <h3>Montañas</h3>
+              <p>La Parva, Portillo y Colorado</p>
+              <a class="btn-gold" href="https://wa.me/56958306172" target="_blank" rel="noopener">Ver destinos</a>
+            </div>
+          </article>
+
+          <article class="dest-card">
+            <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=900&q=80" alt="Viñedos" />
+            <div class="dest-content">
+              <h3>Viñedos</h3>
+              <p>Rutas y degustaciones premium</p>
+              <a class="btn-gold" href="https://wa.me/56958306172" target="_blank" rel="noopener">Ver destinos</a>
+            </div>
+          </article>
+
+          <article class="dest-card">
+            <img src="https://share.google/EdTnAwRJ5FL9YYxzv" alt="Ciudad" />
+            <div class="dest-content">
+              <h3>Ciudad</h3>
+              <p>City tour y patrimonio</p>
+              <a class="btn-gold" href="https://wa.me/56958306172" target="_blank" rel="noopener">Ver destinos</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <h2>Servicios de turismo y transporte</h2>
+          <p>Programas completos para disfrutar Chile con seguridad.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-item">
+            <img src="https://www.google.com/imgres?imgurl=https://as1.ftcdn.net/jpg/03/74/85/26/1000_F_374852698_pVkDf51AhL1j1EAxHiKOqTRqoLmegk1M.jpg&tbnid=FWHb7OkjIeIHTM&vet=1&imgrefurl=https://stock.adobe.com/cz/images/group-happy-friends-man-snd-woman-snowboarders-and-skiers-having-crazy-fun-ski-resort-winter-forest/374852698&docid=28QAtIwAKix8XM&w=1000&h=667&itg=1&hl=es-ES&source=sh/x/im/m1/0&kgs=26ce3e311bc1d359&shem=shrtsdl&utm_source=shrtsdl,sh/x/im/m1/0" alt="Parque Farellones" />
+            <div class="service-body">
+              <h3>Parque Farellones</h3>
+              <p>Tour en nieve con transporte dedicado.</p>
+              <a class="btn-gold" href="https://wa.me/56958306172" target="_blank" rel="noopener">Ir al tour</a>
+            </div>
+          </article>
+
+          <article class="service-item">
+            <img src="https://share.google/EYpWU2NvtSQM4SJxs" alt="Termas Valle de Colina" />
+            <div class="service-body">
+              <h3>Termas Valle de Colina</h3>
+              <p>Relájate en termas naturales con traslado cómodo.</p>
+              <a class="btn-gold" href="https://wa.me/56958306172" target="_blank" rel="noopener">Ir al tour</a>
+            </div>
+          </article>
+
+          <article class="service-item">
+            <img src="https://share.google/4Ci7Ej2wd1i0Ke3K0" alt="Traslado aeropuerto" />
+            <div class="service-body">
+              <h3>Traslado Aeropuerto</h3>
+              <p>Servicio puntual con autos ejecutivos y coordinación de vuelo.</p>
+              <a class="btn-gold" href="https://wa.me/56958306172" target="_blank" rel="noopener">Reservar traslado</a>
+            </div>
+          </article>
+
+          <article class="service-item">
+            <img src="https://share.google/QiL7wTJ45JKSJRlKM" alt="Ruta de viñedos" />
+            <div class="service-body">
+              <h3>Ruta de Viñedos Santa Rita</h3>
+              <p>Visitas a viñas con degustación y retorno seguro.</p>
+              <a class="btn-gold" href="https://wa.me/56958306172" target="_blank" rel="noopener">Cotizar viñedos</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="container about-wrap">
+        <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1100&q=80" alt="Nosotros" style="border-radius:14px;object-fit:cover;width:100%;height:100%;" />
+        <article class="about-card">
+          <span class="eyebrow" style="background:var(--blue-soft);color:#fff;">Nosotros</span>
+          <h2>Transporte y turismo para diferentes destinos</h2>
+          <p>Atendemos viajes turísticos, traslados corporativos y servicios personalizados en Santiago y regiones.</p>
+          <ul class="about-list">
+            <li>Whatsapp: +56 9 5830 6172</li>
+            <li>Correo: contacto@dkelyontransporteyturismo.cl</li>
+            <li>Instagram: @dkelyon_transportes</li>
+            <li>Conductores profesionales y flota moderna</li>
+          </ul>
+          <div class="cta-row" style="margin-top:1rem;">
+            <a class="btn" href="https://wa.me/56958306172" target="_blank" rel="noopener">Hablar con asesor</a>
+            <a class="btn-outline" style="border-color:#003f5c;color:#003f5c;" href="https://instagram.com/dkelyon_transportes" target="_blank" rel="noopener">Ver Instagram</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="fleet">
+      <div class="container">
+        <div class="section-head">
+          <h2>Flota para cada servicio</h2>
+          <p>Vehículos ejecutivos, van turística y minibús para grupos.</p>
+        </div>
+        <div class="fleet-grid">
+          <article class="fleet-card"><h3>Sedan Ejecutivo</h3><p>Ideal para aeropuerto y reuniones.</p></article>
+          <article class="fleet-card"><h3>Van Turística</h3><p>Comodidad para familias y equipaje.</p></article>
+          <article class="fleet-card"><h3>Mini bus</h3><p>Perfecto para grupos y eventos.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><h2>Certificación y respaldo</h2><p>Operamos con enfoque profesional y formal en Chile.</p></div>
+        <div class="badge-wrap">
+          <div class="badge">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Coat_of_arms_of_Chile.svg/120px-Coat_of_arms_of_Chile.svg.png" alt="Sello Chile" />
+            <strong>Sello de Transporte Chile</strong>
+            <p style="margin-top:.35rem;color:#5f606a;">Referencia visual de respaldo institucional en Chile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="closing">
+          <h2>¿Listo para reservar?</h2>
+          <p style="max-width:60ch;margin:.7rem auto 1.15rem;color:#dbedf8;">Escríbenos por WhatsApp, Instagram o correo y te respondemos rápido.</p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn" href="https://wa.me/56958306172" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn-gold" href="mailto:contacto@dkelyontransporteyturismo.cl">Correo</a>
+            <a class="btn-outline" href="https://instagram.com/dkelyon_transportes" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>© <span id="year"></span> DK Elyon Transporte y Turismo</footer>
+    <a class="floating-wa" href="https://wa.me/56958306172" target="_blank" rel="noopener">WhatsApp</a>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      document.getElementById("mail-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const data = {
+          nombre: document.getElementById("nombreApellido").value.trim(),
+          whatsapp: document.getElementById("whatsapp").value.trim(),
+          fecha: document.getElementById("fechaViaje").value,
+          hora: document.getElementById("horaViaje").value,
+          origen: document.getElementById("origen").value.trim(),
+          destino: document.getElementById("destino").value.trim(),
+          pasajeros: document.getElementById("pasajeros").value.trim(),
+          equipaje: document.getElementById("equipaje").value.trim(),
+          pago: document.getElementById("pago").value
+        };
+
+        const subject = "Solicitud de viaje - DK Elyon";
+        const body = [
+          "Nombre y Apellido: " + data.nombre,
+          "Whatsapp: " + data.whatsapp,
+          "Fecha del viaje: " + data.fecha,
+          "Hora: " + data.hora,
+          "Origen: " + data.origen,
+          "Destino: " + data.destino,
+          "Cantidad de pasajeros: " + data.pasajeros,
+          "Equipaje - cantidad y tamaño: " + data.equipaje,
+          "Forma de pago: " + data.pago
+        ].join("\n");
+
+        window.location.href = "mailto:contacto@dkelyontransporteyturismo.cl?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      });
+    </script>
+  </body>
+</html>
